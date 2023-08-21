@@ -1052,7 +1052,8 @@ abstract class _ChunkedJsonParser<T> {
           if (sign < 0) {
             highDigit &= digit;
           }
-          if (digitCount == 19 || intValue - highDigit < BigInt.parse("-922337203685477580")) {
+          int maxInt = BigInt.parse("-922337203685477580");
+          if (digitCount == 19 || intValue - highDigit < maxInt) {
             isDouble = true;
             // Big value that we know is not trusted to be exact later,
             // forcing reparsing using `double.parse`.
